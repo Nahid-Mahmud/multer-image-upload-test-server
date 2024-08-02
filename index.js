@@ -1,25 +1,20 @@
 const express = require("express");
-const mongoose = require("mongoose");
-const imageRoutes = require("./routes/imageRoutes");
-
 const cors = require("cors");
+const path = require("path");
+const imageRoutes = require("./routes/imageRoutes");
+require('dotenv').config();
+
 const app = express();
 
 app.use(express.json());
-
-app.use(
-  cors({
-    origin: "http://localhost:5173",
-  })
-);
+app.use(cors({
+  origin: "http://localhost:5173",
+}));
 
 const port = process.env.PORT || 5000;
 
-// mongoose.connect("your-mongo-db-connection-string", { useNewUrlParser: true, useUnifiedTopology: true });
-
-app.use(express.json());
 app.use("/api", imageRoutes);
-app.use("/photos", express.static("public/photos"));
+app.use("/photos", express.static(path.join(__dirname, "public/photos")));
 
 app.get("/", (req, res) => {
   res.send("Hello from Express!");
