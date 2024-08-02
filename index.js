@@ -1,8 +1,7 @@
 const express = require("express");
-const cors = require("cors");
 const path = require("path");
+const cors = require("cors");
 const imageRoutes = require("./routes/imageRoutes");
-require('dotenv').config();
 
 const app = express();
 
