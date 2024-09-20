@@ -1,10 +1,12 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
+// Define the image schema
 const imageSchema = new mongoose.Schema({
-  filename: String,
-  filepath: String,
-  mimetype: String,
-  size: Number,
+  filename: { type: String, required: true },
+  filepath: { type: String, required: true },
+  mimetype: { type: String, required: true },
+  size: { type: Number, required: true },
 });
 
-module.exports = mongoose.model('Image', imageSchema);
+// Export the Image model
+module.exports = mongoose.model("Image", imageSchema);
